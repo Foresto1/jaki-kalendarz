@@ -23,6 +23,7 @@ namespace jakiś_kalendarz
         private readonly HttpClient _httpClient = new();
 
         private const string PoznanUrl = "https://api.open-meteo.com/v1/forecast?latitude=52.4069&longitude=16.9299&current=temperature_2m";
+        private const string WarsawUrl = "https://api.open-meteo.com/v1/forecast?latitude=52.2297&longitude=21.0122&current=temperature_2m";
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -49,6 +50,8 @@ namespace jakiś_kalendarz
 
         private async Task LoadWeatherAsync(string requestUrl)
         {
+            WarsawButton.IsEnabled = false;
+            PoznanButton.IsEnabled = false;
             StatusText.Text = "Pobieram...";
             DownloadedText.Text = string.Empty;
 
@@ -64,6 +67,8 @@ namespace jakiś_kalendarz
             }
             finally
             {
+                WarsawButton.IsEnabled = true;
+                PoznanButton.IsEnabled = true;
                 StatusText.Text = "Gotowe.";
             }
         }
@@ -71,6 +76,11 @@ namespace jakiś_kalendarz
         private async void PoznanButton_Click(object sender, RoutedEventArgs e)
         {
             await LoadWeatherAsync(PoznanUrl); 
+        }
+
+        private async void WarsawButton_Click(object sender, RoutedEventArgs e)
+        {
+            await LoadWeatherAsync(WarsawUrl);
         }
     }
 }

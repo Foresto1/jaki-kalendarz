@@ -18,7 +18,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,18">
-            <Button Content="Pogoda: Poznań" Click="PoznanButton_Click" Padding="16,8"/>
+            <Button x:Name="WarsawButton" Content="Pogoda: Warszawa" Click="WarsawButton_Click" Padding="16,8" Margin="0,0,8,0"/>
+            <Button x:Name="PoznanButton" Content="Pogoda: Poznań" Click="PoznanButton_Click" Padding="16,8"/>
         </StackPanel>
 
         <Grid Grid.Row="2">
